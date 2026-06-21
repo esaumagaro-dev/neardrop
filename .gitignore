@@ -1,0 +1,48 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.g.dart
+!lib/**/*.g.dart.example
+.idea/
+*.iml
+*.lock
+!pubspec.lock
+
+# Generated isar files are committed normally; uncomment below to exclude:
+# *.g.dart
+
+# Android
+android/.gradle/
+android/captures/
+android/local.properties
+android/gradlew
+android/gradlew.bat
+**/android/key.properties
+*.jks
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+**/ios/Runner.xcworkspace/xcuserdata/
+
+# Windows/macOS/Linux desktop
+windows/flutter/ephemeral/
+macos/Flutter/ephemeral/
+linux/flutter/ephemeral/
+
+# Node (signaling_server)
+signaling_server/node_modules/
+signaling_server/npm-debug.log*
+
+# Misc
+.DS_Store
+*.log
+coverage/
+.env

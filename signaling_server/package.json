@@ -1,0 +1,17 @@
+{
+  "name": "neardrop-signaling-server",
+  "version": "1.0.0",
+  "description": "Lightweight WebSocket signaling server for NearDrop's WebRTC relay path",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "ws": "^8.17.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
