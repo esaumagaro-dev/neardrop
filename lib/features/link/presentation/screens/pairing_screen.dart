@@ -6,7 +6,6 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:uuid/uuid.dart';
 import '../../../../core/security/pairing_service.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../providers/near_link_provider.dart';
 
 /// Lets the user pair this device with another by scanning a QR code
 /// (mobile) or displaying one (desktop / the device being scanned).

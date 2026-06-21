@@ -31,7 +31,6 @@ class TransferEngine {
 
   StreamSubscription? _incomingSub;
   FileChunkHeader? _pendingHeader;
-  final List<int> _receiveBuffer = [];
   IOSink? _receiveSink;
   File? _receiveFile;
   int _receivedBytes = 0;

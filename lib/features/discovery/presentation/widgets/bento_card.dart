@@ -28,9 +28,9 @@ class BentoCard extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: Colors.white.withOpacity(0.25)),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class BentoCard extends StatelessWidget {
                 Text(
                   subtitle,
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.7), fontSize: 12),
+                      color: Colors.white.withValues(alpha: 0.7), fontSize: 12),
                 ),
                 if (child != null) ...[const SizedBox(height: 8), child!],
               ],

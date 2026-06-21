@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:nsd/nsd.dart';
 import '../domain/peer.dart';
 
@@ -26,7 +27,7 @@ class MdnsDiscoveryService {
         type: _serviceType,
         port: port,
         txt: {
-          'platform': platform.codeUnits,
+          'platform': Uint8List.fromList(platform.codeUnits),
         },
       ),
     );

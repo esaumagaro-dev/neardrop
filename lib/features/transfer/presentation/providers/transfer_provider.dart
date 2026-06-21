@@ -7,7 +7,6 @@ import '../../../../core/network/smart_switch.dart';
 import '../../../../core/security/encryption_service.dart';
 import '../../data/transfer_engine.dart';
 import '../../../discovery/domain/peer.dart';
-import 'package:cryptography/cryptography.dart';
 
 final smartSwitchProvider = Provider((ref) => SmartSwitch());
 final encryptionServiceProvider = Provider((ref) => EncryptionService());

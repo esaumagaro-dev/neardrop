@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'transfer_channel.dart';
 
@@ -87,7 +88,7 @@ class WebRtcTransferChannel implements TransferChannel {
   @override
   Future<void> sendChunk(List<int> bytes) async {
     if (!_dataChannelReady.isCompleted) await _dataChannelReady.future;
-    await _dataChannel?.send(RTCDataChannelMessage.fromBinary(bytes));
+    await _dataChannel?.send(RTCDataChannelMessage.fromBinary(Uint8List.fromList(bytes)));
   }
 
   @override
