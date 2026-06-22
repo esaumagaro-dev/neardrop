@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../link/presentation/screens/pairing_screen.dart';
 import '../../../transfer/presentation/screens/transfer_history_screen.dart';
@@ -16,11 +17,49 @@ class DashboardScreen extends ConsumerStatefulWidget {
 }
 
 class _DashboardScreenState extends ConsumerState<DashboardScreen> {
+  bool _permissionsGranted = false;
+  bool _permissionsChecked = false;
+
   @override
   void initState() {
     super.initState();
-    // Kick off mDNS advertise + browse on launch.
-    Future.microtask(() => ref.read(discoveryControllerProvider));
+    _requestPermissions();
+  }
+
+  Future<void> _requestPermissions() async {
+    final permissions = [
+      Permission.bluetoothScan,
+      Permission.bluetoothConnect,
+      Permission.bluetoothAdvertise,
+      Permission.location,
+      Permission.nearbyWifiDevices,
+    ];
+
+    final statuses = await permissions.request();
+    final allGranted = statuses.values.every((s) => s.isGranted);
+
+    if (allGranted && mounted) {
+      setState(() {
+        _permissionsGranted = true;
+        _permissionsChecked = true;
+      });
+      ref.read(discoveryControllerProvider);
+    } else if (mounted) {
+      setState(() => _permissionsChecked = true);
+      final denied = statuses.entries
+          .where((e) => !e.value.isGranted)
+          .map((e) => e.key.toString())
+          .join(', ');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Permissions denied: $denied'),
+          action: SnackBarAction(
+            label: 'Settings',
+            onPressed: () => openAppSettings(),
+          ),
+        ),
+      );
+    }
   }
 
   @override
